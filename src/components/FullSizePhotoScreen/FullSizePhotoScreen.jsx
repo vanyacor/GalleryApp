@@ -1,13 +1,13 @@
 import React from 'react'
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { ScrollView, TouchableHighlight } from 'react-native-gesture-handler';
-import { connect } from 'react-redux';
-import { set_photo } from './../../redux/reducers/FullSizePhotoScreenReduecer';
+import { useSelector } from 'react-redux';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 console.log(screenWidth);
 
-let PhotoScreen = ({ navigation, photo }) => {
+export let FullSizePhotoScreen = ({ navigation }) => {
+    const photo = useSelector((state) => state.FullSizePhotoPage.photo);
     const goBack = () => {
         navigation.navigate('Gallery');
     }
@@ -15,7 +15,7 @@ let PhotoScreen = ({ navigation, photo }) => {
         <ScrollView style={styles.container}>
             <View style={styles.wrapper}>
                 <View style={styles.author_name_wrapper}>
-                    <Text style={styles.author_name}>Author: ${photo.user.name}</Text>
+                    <Text style={styles.author_name}>Author: {photo.user.name}</Text>
                     <TouchableHighlight
                         onPress={goBack}
                         underlayColor="#dddddd">
@@ -36,14 +36,6 @@ let PhotoScreen = ({ navigation, photo }) => {
         </ScrollView>
     )
 }
-
-const MapStateToProps = (state) => ({
-    photo: state.FullSizePhotoPage.photo
-});
-
-export let FullSizePhotoScreen = connect(MapStateToProps, {
-    set_photo
-})(PhotoScreen)
 
 FullSizePhotoScreen.navigationOptions = {
     headerShown: false

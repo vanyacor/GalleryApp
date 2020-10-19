@@ -18,7 +18,7 @@ export const PhotoContainer = ({ photo, navigation, set_photo }) => {
                 </View>
             </TouchableOpacity>
             <View style={styles.author_name}>
-                <Text >Author: {photo.user.name}</Text>
+                <Text >{photo.user.name}</Text>
             </View>
         </View>
     )
