@@ -41,7 +41,7 @@ const Photos = ({ photos, getUsersData, navigation, set_photo, isLoading }) => {
                         <View style={styles.more_photos_btn}>
                             <Button
                                 onPress={loadMorePhotos}
-                                title={"Загрузить еще"} />
+                                title={"More"} />
                         </View>
                     </View>}
             </ScrollView>
